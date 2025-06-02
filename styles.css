@@ -1,281 +1,265 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap');
+/* Importa fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;700&display=swap');
 
+/* Estilos generales del cuerpo */
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #fceabb, #f8b500);
-    font-family: 'Roboto', sans-serif;
+    /* Fondo degradado animado con colores marinos (azules y verdes) */
+    background: linear-gradient(135deg, #A8DADC, #457B9D, #1D3557); /* Aqua, azul medio, azul oscuro/teal */
+    background-size: 400% 400%; /* Permite la animación del degradado */
+    animation: gradientAnimation 15s ease infinite; /* Animación de degradado */
+    font-family: 'Montserrat', sans-serif; /* Fuente principal */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    perspective: 1200px;
+    min-height: 100vh; /* Altura mínima para centrar contenido */
+    overflow: hidden; /* Oculta el desbordamiento para las animaciones de fondo */
+    color: #2C2C2C; /* Color de texto predeterminado (negro oscuro) */
+    opacity: 0; /* Opacidad inicial para la transición de carga */
+    transition: opacity 0.8s ease-in-out; /* Transición suave al cargar */
 }
 
+/* Animación del degradado de fondo */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Clase para el cuerpo cuando la página ha cargado */
+body.loaded {
+    opacity: 1;
+}
+
+/* Contenedor principal de la carta */
 .container {
-    background: white;
-    padding: 2rem 3rem;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    max-width: 600px;
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+    backdrop-filter: blur(10px); /* Efecto de cristal esmerilado */
+    padding: 2.5rem 3.5rem; /* Espaciado interno */
+    border-radius: 20px; /* Bordes más redondeados */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25); /* Sombra más pronunciada y suave */
+    max-width: 650px; /* Ancho máximo */
+    width: 90%; /* Ancho responsivo */
     text-align: center;
     position: relative;
-    perspective: 1000px;
+    border: 1px solid rgba(69, 123, 157, 0.3); /* Borde sutil en tono azul medio */
+    transform: translateY(20px); /* Posición inicial para animación de entrada */
+    opacity: 0; /* Opacidad inicial para animación de entrada */
+    animation: fadeInUp 1s ease-out forwards; /* Animación de entrada */
+    animation-delay: 0.5s; /* Retraso para la animación */
 }
 
+/* Animación de aparición para el contenedor */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos del título de la carta */
 .title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3rem;
-    color: #d94f4f;
-    margin-bottom: 1rem;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: fadeInDown 1s forwards;
-    transition: opacity 0.5s ease;
+    font-family: 'Great Vibes', cursive; /* Fuente cursiva elegante */
+    font-size: 3.8rem; /* Tamaño de fuente más grande */
+    color: #1D3557; /* Color azul oscuro/teal */
+    margin-bottom: 1.5rem; /* Espaciado inferior */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra de texto sutil */
+    opacity: 0; /* Opacidad inicial para animación */
+    transform: translateY(-20px); /* Posición inicial para animación */
+    animation: fadeInDown 1s ease-out forwards; /* Animación de aparición */
+    animation-delay: 1s; /* Retraso para la animación */
 }
 
+/* Animación de aparición para el título */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos de los párrafos de la carta */
 .letter p {
-    font-size: 1.2rem;
-    color: #333;
-    line-height: 1.6;
-    margin: 1rem 0;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.5s ease;
+    font-size: 1.4rem; /* Tamaño de fuente ligeramente más grande */
+    color: #333; /* Color de texto oscuro */
+    line-height: 1.9; /* Altura de línea para mejor legibilidad */
+    margin: 1.2rem 0; /* Espaciado vertical */
+    max-width: 95%; /* Ancho máximo del párrafo */
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0; /* Opacidad inicial para animación */
+    transform: translateY(10px); /* Posición inicial para animación */
+    animation: fadeInText 0.8s ease-out forwards; /* Animación de aparición de texto */
 }
 
-button {
-    margin-top: 2rem;
-    background: #d94f4f;
+/* Retrasos para cada párrafo para una aparición escalonada */
+.letter p:nth-child(1) { animation-delay: 1.5s; }
+.letter p:nth-child(2) { animation-delay: 1.8s; }
+.letter p:nth-child(3) { animation-delay: 2.1s; }
+.letter p:nth-child(4) { animation-delay: 2.4s; }
+
+/* Animación de aparición para el texto */
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos de los botones y enlaces */
+button,
+a.btn {
+    display: inline-flex; /* Usa flexbox para alinear el icono y el texto */
+    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: center; /* Centra horizontalmente los elementos */
+    margin-top: 2.5rem; /* Margen superior */
+    background: linear-gradient(45deg, #457B9D, #1D3557); /* Degradado en el botón con tonos azules */
     color: white;
     border: none;
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-    border-radius: 30px;
+    padding: 0.9rem 2.5rem; /* Relleno */
+    font-size: 1.2rem; /* Tamaño de fuente */
+    border-radius: 35px; /* Bordes más redondeados */
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(217,79,79,0.6);
-    transition: background 0.3s ease;
-    z-index: 10;
-    position: relative;
+    box-shadow: 0 6px 15px rgba(69, 123, 157, 0.4); /* Sombra más suave con color azul */
+    transition: all 0.3s ease; /* Transición suave en todas las propiedades */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    font-weight: 600; /* Texto en negrita */
+    letter-spacing: 0.5px; /* Espaciado entre letras */
+    opacity: 0; /* Opacidad inicial para animación */
+    transform: translateY(20px); /* Posición inicial para animación */
+    animation: fadeInUp 1s ease-out forwards; /* Animación de aparición */
+    animation-delay: 2.7s; /* Retraso para la animación */
 }
 
-button:hover {
-    background: #b03b3b;
+/* Estilos para las imágenes de tortuga dentro de los botones */
+.button-turtle-icon {
+    width: 1.8em; /* Tamaño del icono de tortuga */
+    height: 1.8em;
+    object-fit: contain; /* Asegura que la imagen se ajuste sin distorsionarse */
+    vertical-align: middle; /* Alineación vertical */
+    filter: invert(1); /* Invierte los colores si la imagen es oscura para que resalte en el botón claro */
 }
 
-@keyframes fadeInDown {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Espaciado del icono en los botones */
+button.back-btn .button-turtle-icon {
+    margin-right: 0.5em;
 }
 
-.envelope {
-    width: 600px;
-    height: 400px;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    position: relative;
-    transform-style: preserve-3d;
-    transform-origin: top center;
-    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    margin: 0 auto;
+a.btn.next-btn .button-turtle-icon {
+    margin-left: 0.5em;
 }
 
-.flap {
+/* Efecto hover para botones y enlaces */
+button:hover,
+a.btn:hover {
+    background: linear-gradient(45deg, #1D3557, #457B9D); /* Invierte el degradado */
+    transform: translateY(-3px) scale(1.02); /* Pequeño levantamiento y escala */
+    box-shadow: 0 8px 20px rgba(69, 123, 157, 0.6); /* Sombra más intensa */
+}
+
+/* Estilos para el botón de "Volver" */
+#backBtn {
+    animation-delay: 0.5s !important; /* Retraso específico para el botón de volver */
+}
+
+/* Animación de corazones y tortugas flotantes */
+.heart, .turtle {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 600px;
-    height: 200px;
-    background: #d94f4f;
-    border-radius: 15px 15px 0 0;
-    transform-origin: bottom center;
-    transform-style: preserve-3d;
-    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 5;
-    box-shadow: 0 4px 10px rgba(217,79,79,0.6);
+    /* Animación de flotación más sutil */
+    animation: floatElement 10s ease-in-out infinite; /* Aumenta la duración para un movimiento más lento */
+    opacity: 0; /* Opacidad inicial */
+    pointer-events: none; /* No interactúa con el ratón */
+    z-index: -1; /* Detrás del contenido */
+    display: flex; /* Para centrar el SVG/imagen dentro del div */
+    justify-content: center;
+    align-items: center;
 }
 
-.envelope.open {
-    transform: rotateX(-160deg);
+.heart svg {
+    width: 100%;
+    height: 100%;
+    color: #80ED99; /* Color del corazón: verde menta para contraste con el tema marino */
+    transform: rotate(-45deg); /* Rotación para la forma del corazón */
 }
 
-.envelope.open .flap {
-    transform: rotateX(190deg);
+.turtle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Asegura que la imagen de la tortuga se ajuste */
+    transform: rotate(0deg); /* Sin rotación inicial para la tortuga */
 }
 
-.envelope .letter {
-    padding: 2rem 3rem;
-    position: relative;
-    z-index: 1;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease 1s, transform 1s ease 1s;
-}
-
-.envelope.open .letter {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.animate p {
-    animation: fadeInRight 1s forwards;
-}
-
-.animate p:nth-child(1) {
-    animation-delay: 0.3s;
-}
-
-.animate p:nth-child(2) {
-    animation-delay: 0.6s;
-}
-
-.animate p:nth-child(3) {
-    animation-delay: 0.9s;
-}
-
-.animate p:nth-child(4) {
-    animation-delay: 1.2s;
-}
-
-/* Heart floating animation */
-.heart {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: #d94f4f;
-    transform: rotate(-45deg);
-    animation: floatUp 4s linear forwards;
-    opacity: 0.8;
-    border-radius: 15px 15px 0 0;
-    pointer-events: none;
-    user-select: none;
-}
-
-.heart::before,
-.heart::after {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: #d94f4f;
-    border-radius: 50%;
-}
-
-.heart::before {
-    top: -15px;
-    left: 0;
-}
-
-.heart::after {
-    left: 15px;
-    top: 0;
-}
-
-/* "Te amo" floating animation */
-.te-amo {
-    position: absolute;
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.5rem;
-    color: #d94f4f;
-    opacity: 0.9;
-    animation: floatUpText 4s linear forwards;
-    pointer-events: none;
-    user-select: none;
-}
-
-@keyframes floatUp {
+/* Animación de flotación para los elementos (más sutil) */
+@keyframes floatElement {
     0% {
-        transform: translateY(0) rotate(-45deg);
+        transform: translateY(0) scale(0.5); /* Empieza más grande */
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8; /* Menor opacidad máxima */
+        transform: translateY(-20px) scale(0.8);
+    }
+    80% {
         opacity: 0.8;
+        transform: translateY(-80px) scale(0.9); /* Rango de movimiento vertical más pequeño */
     }
     100% {
-        transform: translateY(-200px) rotate(-45deg);
+        transform: translateY(-100px) scale(1); /* Termina un poco más grande, pero no excesivamente */
         opacity: 0;
     }
 }
 
-@keyframes floatUpText {
-    0% {
-        transform: translateY(0);
-        opacity: 0.9;
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 2rem;
+        max-width: 95%;
     }
-    100% {
-        transform: translateY(-200px);
-        opacity: 0;
+
+    .title {
+        font-size: 2.8rem;
+    }
+
+    .letter p {
+        font-size: 1.1rem;
+    }
+
+    button,
+    a.btn {
+        padding: 0.7rem 2rem;
+        font-size: 1rem;
     }
 }
 
-@keyframes fadeInRight {
-    to {
-        opacity: 1;
-        transform: translateX(0);
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
     }
-}
 
-.animate p {
-    animation: fadeInRight 1s forwards;
-}
-
-.animate p:nth-child(1) {
-    animation-delay: 0.3s;
-}
-
-.animate p:nth-child(2) {
-    animation-delay: 0.6s;
-}
-
-.animate p:nth-child(3) {
-    animation-delay: 0.9s;
-}
-
-.animate p:nth-child(4) {
-    animation-delay: 1.2s;
-}
-
-/* Heart floating animation */
-.heart {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: #d94f4f;
-    transform: rotate(-45deg);
-    animation: floatUp 4s linear infinite;
-    opacity: 0.8;
-    border-radius: 15px 15px 0 0;
-}
-
-.heart::before,
-.heart::after {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: #d94f4f;
-    border-radius: 50%;
-}
-
-.heart::before {
-    top: -15px;
-    left: 0;
-}
-
-.heart::after {
-    left: 15px;
-    top: 0;
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translateY(0) rotate(-45deg);
-        opacity: 0.8;
+    .title {
+        font-size: 2.2rem;
     }
-    100% {
-        transform: translateY(-200px) rotate(-45deg);
-        opacity: 0;
+
+    .letter p {
+        font-size: 1rem;
+    }
+
+    button,
+    a.btn {
+        padding: 0.6rem 1.8rem;
+        font-size: 0.9rem;
     }
 }
