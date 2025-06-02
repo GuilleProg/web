@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const turtleImageURL = './Tortuga.png';
 
     // Configuración: máximo de elementos flotantes
-    const MAX_HEARTS = 2;
-    const MAX_TURTLES = 1;
+    const MAX_HEARTS = 10;
+    const MAX_TURTLES = 7;
     let currentHearts = 0;
     let currentTurtles = 0;
 
@@ -22,7 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const size = Math.random() * 18 + 14;
         heart.style.width = `${size}px`;
         heart.style.height = `${size}px`;
-        heart.style.left = `${Math.random() * 90}vw`;
+
+        // Posición aleatoria en toda la pantalla
+        const left = Math.random() * (window.innerWidth - size);
+        const top = Math.random() * (window.innerHeight - size);
+        heart.style.left = `${left}px`;
+        heart.style.top = `${top}px`;
+        heart.style.position = 'fixed';
+
         heart.style.animationDelay = `${Math.random() * 1.5}s`;
 
         currentHearts++;
@@ -46,7 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const size = Math.random() * 40 + 40;
         turtle.style.width = `${size}px`;
         turtle.style.height = `${size}px`;
-        turtle.style.left = `${Math.random() * 90}vw`;
+
+        // Posición aleatoria en toda la pantalla
+        const left = Math.random() * (window.innerWidth - size);
+        const top = Math.random() * (window.innerHeight - size);
+        turtle.style.left = `${left}px`;
+        turtle.style.top = `${top}px`;
+        turtle.style.position = 'fixed';
+
         turtle.style.animationDelay = `${Math.random() * 2.5}s`;
 
         currentTurtles++;
