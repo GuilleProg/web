@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #fceabb, #f8b500);
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    perspective: 1200px;
+}
+
+.container {
+    background: white;
+    padding: 2rem 3rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+    perspective: 1000px;
+}
+
+.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #d94f4f;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInDown 1s forwards;
+    transition: opacity 0.5s ease;
+}
+
+.letter p {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.6;
+    margin: 1rem 0;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease;
+}
+
+button {
+    margin-top: 2rem;
+    background: #d94f4f;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(217,79,79,0.6);
+    transition: background 0.3s ease;
+    z-index: 10;
+    position: relative;
+}
+
+button:hover {
+    background: #b03b3b;
+}
+
+@keyframes fadeInDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.envelope {
+    width: 600px;
+    height: 400px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 200px;
+    background: #d94f4f;
+    border-radius: 15px 15px 0 0;
+    transform-origin: bottom center;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 5;
+    box-shadow: 0 4px 10px rgba(217,79,79,0.6);
+}
+
+.envelope.open {
+    transform: rotateX(-160deg);
+}
+
+.envelope.open .flap {
+    transform: rotateX(190deg);
+}
+
+.envelope .letter {
+    padding: 2rem 3rem;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease 1s, transform 1s ease 1s;
+}
+
+.envelope.open .letter {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate p {
+    animation: fadeInRight 1s forwards;
+}
+
+.animate p:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.animate p:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.animate p:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+.animate p:nth-child(4) {
+    animation-delay: 1.2s;
+}
+
+/* Heart floating animation */
+.heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #d94f4f;
+    transform: rotate(-45deg);
+    animation: floatUp 4s linear forwards;
+    opacity: 0.8;
+    border-radius: 15px 15px 0 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #d94f4f;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -15px;
+    left: 0;
+}
+
+.heart::after {
+    left: 15px;
+    top: 0;
+}
+
+/* "Te amo" floating animation */
+.te-amo {
+    position: absolute;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.5rem;
+    color: #d94f4f;
+    opacity: 0.9;
+    animation: floatUpText 4s linear forwards;
+    pointer-events: none;
+    user-select: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(-45deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-200px) rotate(-45deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatUpText {
+    0% {
+        transform: translateY(0);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate p {
+    animation: fadeInRight 1s forwards;
+}
+
+.animate p:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.animate p:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.animate p:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+.animate p:nth-child(4) {
+    animation-delay: 1.2s;
+}
+
+/* Heart floating animation */
+.heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #d94f4f;
+    transform: rotate(-45deg);
+    animation: floatUp 4s linear infinite;
+    opacity: 0.8;
+    border-radius: 15px 15px 0 0;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #d94f4f;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -15px;
+    left: 0;
+}
+
+.heart::after {
+    left: 15px;
+    top: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(-45deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-200px) rotate(-45deg);
+        opacity: 0;
+    }
+}
